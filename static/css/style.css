@@ -1,0 +1,395 @@
+:root {
+    --primary: #6ca965;
+    --primary-dark: #568750;
+    --secondary: #c8b653;
+    --secondary-dark: #9a8a31;
+    --dark: #111111;
+    --white: #ffffff;
+    --grey: #999999;
+    --mediumgrey: #cccccc;
+    --lightgrey: #f5f5f5;
+    --black: #000000;
+    --red: #fa2a2a;
+    --lightred: #fb8686;
+    --green: #0cd030;
+    --lightgreen: #a2ffb3;
+    --button-font-size: 1rem;
+    --button-radius: 5px;
+    --button-padding: 0.5rem 1rem;
+    --button-large-font-size: 1.5rem;
+    --button-large-padding: 1rem 2rem;
+    --button-large-radius: 8px;
+    --flash-error-bg: #ffeff2;
+    --flash-error-color: #fa2a2a;
+    --flash-success-bg: #e7fbf4;
+    --flash-success-color: #0cd030;
+    --flash-info-bg: #e1f0ff;
+    --flash-info-color: #0c6cd0;
+}
+
+#nav {
+    background-color: var(--primary);
+    color: var(--grey);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#home-link {
+    margin-right: 50px;
+}
+#nav-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#nav-menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#nav-menu li{
+    margin: 0 20px;
+}
+#nav-menu a, 
+#off-canvas-menu a {
+    color: var(--lightgrey);
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 2;
+    letter-spacing: 0.1rem;
+    font-family: 'Bebas Neue', 'Helvetica', sans-serif;
+}
+#nav-menu a:hover,
+#off-canvas-menu a:hover {
+    box-shadow: 0 -3px 0 var(--lightgrey) inset;
+}
+#nav-off-canvas {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    bottom: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--white);
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+}
+#nav-off-canvas.show {
+    right: 0;
+}
+#nav-off-canvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--mediumgrey);
+}
+#nav-off-canvas-body {
+    padding: 24px;
+}
+#off-canvas-menu {
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+#off-canvas-menu li {
+    margin: 10px 0;
+}
+#btn-close-off-canvas {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    line-height: 1.5;
+    background-color: var(--lightgrey);
+}
+footer{
+    flex: 1;
+}
+footer {
+    background-color: var(--mediumgrey);
+    color: var(--dark);
+    padding: 40px 0;
+}
+.footer-group {
+    margin-bottom: 40px;
+}
+.footer-group a {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark);
+    text-decoration: none;
+}
+.footer-group a:hover {
+    text-decoration: underline;
+}
+@media screen and (min-width: 1024px) {
+    #footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .footer-group {
+        margin-bottom: 0;
+        width: 25%;
+    }
+}
+h1, .h1 {
+    font-size: 2rem;
+    line-height: 1;
+    font-family: 'Bebas Neue', 'Helvetica', sans-serif;
+}
+h6, .h6 {
+    font-size: 1.5rem;
+    font-size: 500;
+    line-height: 1.5;
+}
+b {
+    font-size: 1.2rem;
+}
+#home-link2 {
+    margin-left: 15%;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+    /* margin-top: -27.5%; */
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 0px;
+    margin-bottom: 0.5rem;
+    margin-left: 2rem;
+    line-height: 1.2;
+    letter-spacing: 0.3rem;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+}
+.form-input {
+    margin-bottom: 1rem;
+    margin-left: 5rem;
+    margin-right: 10rem;
+}
+form input, form select, form textarea {
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    padding: 12px 24px;
+}
+form input:focus {
+    border: 1px solid var(--primary);
+}
+form input.error {
+    border: 1px solid var(--red);
+}
+.form-input label {
+    font-size: 14px;
+}
+.form-input label, .form-input input{
+    display: inline-block;
+    width: 95%;
+}
+.width-100 {
+    width: 95%;
+}
+.width-50 {
+    width: 50%;
+}
+.width-33 {
+    width: 33.333%;
+}
+.width-25 {
+    width: 25%;
+}
+
+section {
+    padding: 25px 0;
+}
+.regular-button {
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border-radius: var(--button-radius);
+    cursor: pointer;
+}
+.large-button {
+    font-size: var(--button-large-font-size);
+    padding: var(--button-large-padding);
+    border-radius: var(--button-large-radius);
+    cursor: pointer;
+}
+.button-primary {
+    background-color: var(--primary);
+    border: 2px solid var(--primary-dark);
+    color: var(--dark);
+}
+.button-primary:hover {
+    background-color: var(--primary-dark);
+}
+.button-dark {
+    background-color: var(--dark);
+    border: 2px solid var(--black);
+    color: var(--white);
+}
+.button-darkt:hover {
+    background-color: var(--black);
+}
+.button-light {
+    background-color: var(--lightgrey);
+    border: 2px solid var(--mediumgrey);
+    color: var(--dark);
+}
+.button-light:hover {
+    background-color: var(--mediumgrey);
+}
+.button-delete {
+    border: none; 
+    background-color: transparent; 
+    color: var(--red);
+    cursor: pointer; 
+}
+.bg-primary {
+    background-color: var(--primary);
+}
+.bg-secondary {
+    background-color: var(--secondary);
+}
+.bg-grey {
+    background-color: var(--grey);
+}
+.bg-dark {
+    background-color: var(--dark);
+}
+.bg-mediumgrey {
+    background-color: var(--mediumgrey);
+}
+.bg-lightgrey {
+    background-color: var(--lightgrey);
+}
+.bg-white {
+    background-color: var(--white);
+}
+.container {
+    width: 95%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+@media screen and (min-width: 480px) {
+    .container {
+        max-width: 95vw;
+    }
+}
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 92vw;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 90vw;
+    }
+}
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: 1300px;
+    }
+}
+.flash-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.flash-message-container .success-message {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--flash-success-color);
+    background-color: var(--flash-success-bg);
+    color: var(--flash-success-color);
+}
+.flash-message-container .error-message {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--flash-error-color);
+    background-color: var(--flash-error-bg);
+    color: var(--flash-error-color);
+}
+.flash-message-container .info-message {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--flash-info-color);
+    background-color: var(--flash-info-bg);
+    color: var(--flash-info-color);
+}
+.padding-small {
+    padding: 10px;
+}
+.padding-medium {
+    padding: 20px;
+}
+.padding-large {
+    padding: 30px;
+}
+.card {
+    background-color: var(--white);
+    border-radius: var(--button-radius);
+    border: 1px solid var(--mediumgrey);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+button {
+    font-family: 'Bebas Neue', 'Helvetica', sans-serif;
+    letter-spacing: 0.1rem;
+}
+.hide {
+    visibility: hidden;
+}
+.bold {
+    font-weight: bold;
+}
+.alert {
+    padding: 10px 20px;
+    background-color: var(--black);
+    color: var(--white);
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+}
+.closebtn:hover {
+    color: black;
+}
+.invalid {
+    color: var(--red);
+    margin-right: 10px;
+}
+.valid {
+    color: var(--green);
+    margin-right: 10px;
+}
+.valid:before {
+    position: relative;
+    left: -5px;
+    content: "✔";
+}
+  
+.invalid:before {
+    position: relative;
+    left: -5px;
+    content: "✖";
+}

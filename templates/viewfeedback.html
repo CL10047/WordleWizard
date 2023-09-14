@@ -1,0 +1,44 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    View Feedback - WordleWizard
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/viewfeedback.css') }}">
+{% endblock %}
+
+{% block content %}
+	<section class="bg-lightgrey text-white">
+		<div class="container">
+			<h1 class="h3">
+                View Feedback
+            </h1>
+            <table>
+				<colgroup>
+					<col style="width:40%" />
+					<col style="width:60%" />
+				</colgroup>
+				<tr>
+					<th class="text-center">Email</th>
+					<th class="text-center">Feedback</th>
+				</tr>
+				{% if not feedbacks %}
+					<tr>
+						<td colspan="2" class="text-center">No feedbacks yet.</td>
+					</tr>
+				{% endif %}
+                {% for feedback in feedbacks %}
+					<tr>
+                        {% if not feedback.email %}
+                            <td class="text-center">N/A</td>
+                        {% else %}
+						    <td class="text-center">{{ feedback.email }}</td>
+                        {% endif %}
+						<td class="text-center">{{ feedback.feedback }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</section>
+{% endblock %}

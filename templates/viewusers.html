@@ -1,0 +1,97 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    View Users - WordleWizard
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/viewusers.css') }}">
+{% endblock %}
+
+{% block content %}
+	<section class="bg-lightgrey text-white">
+		<div class="container">
+            <h1 class="h3">
+                Lead Admin(s):
+            </h1>
+            <table>
+				<colgroup>
+					<col style="width:50%" />
+					<col style="width:40%" />
+                    <col style="width:10%" />
+				</colgroup>
+				<tr>
+					<th class="text-center">Email</th>
+					<th class="text-center">Username</th>
+                    <th class="text-center">ID</th>
+				</tr>
+				{% if not lead_admins %}
+					<tr>
+						<td colspan="4" class="text-center">No Lead Admin(s) yet.</td>
+					</tr>
+				{% endif %}
+                {% for lead_admin in lead_admins %}
+					<tr>
+                        <td class="text-center">{{ lead_admin.email }}</td>
+						<td class="text-center">{{ lead_admin.username }}</td>
+                        <td class="text-center">{{ lead_admin.id }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+			<h1 class="h3">
+                Admin(s):
+            </h1>
+            <table>
+				<colgroup>
+					<col style="width:50%" />
+					<col style="width:40%" />
+                    <col style="width:10%" />
+				</colgroup>
+				<tr>
+					<th class="text-center">Email</th>
+					<th class="text-center">Username</th>
+                    <th class="text-center">ID</th>
+				</tr>
+				{% if not admins %}
+					<tr>
+						<td colspan="4" class="text-center">No Admin(s) yet.</td>
+					</tr>
+				{% endif %}
+                {% for admin in admins %}
+					<tr>
+                        <td class="text-center">{{ admin.email }}</td>
+						<td class="text-center">{{ admin.username }}</td>
+                        <td class="text-center">{{ admin.id }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+            <h1 class="h3">
+                User(s):
+            </h1>
+            <table>
+				<colgroup>
+					<col style="width:50%" />
+					<col style="width:40%" />
+                    <col style="width:10%" />
+				</colgroup>
+				<tr>
+					<th class="text-center">Email</th>
+					<th class="text-center">Username</th>
+                    <th class="text-center">ID</th>
+				</tr>
+				{% if not users %}
+					<tr>
+						<td colspan="4" class="text-center">No User(s) yet.</td>
+					</tr>
+				{% endif %}
+                {% for user in users %}
+					<tr>
+                        <td class="text-center">{{ user.email }}</td>
+						<td class="text-center">{{ user.username }}</td>
+						<td class="text-center">{{ user.id }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</section>
+{% endblock %}

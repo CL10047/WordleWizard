@@ -1,0 +1,154 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    Profile - WordleWizard
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">		
+{% endblock %}
+
+{% block content %}
+	<section class="bg-lightgrey text-white">
+		<div class="container">
+			<h1 class="h3">
+                Profile
+            </h1>
+			<label class="form-line">
+				<label class="h4 options" onclick="showUserInfo()">Your Info</label>
+				<label class="h4 options" onclick="showUsername()">Change Username</label>
+				<label class="h4 options" onclick="showEmail()">Change Email</label>
+				<label class="h4 options" onclick="showPassword()">Change Password</label>
+			</label>
+			<br>
+			<br>
+			<form class="card" id="user-info">
+				<label class="form-line">
+					<label class="h4">Your Info</label>
+				</label>
+				<hr>
+				<label class="form-line-3">
+					{% if user.username %}
+						<label>Your Username : {{ user.username }}</label>
+					{% else %}
+						<label>Your Username : N/A</label>
+					{% endif %}
+				</label>
+				<br>
+				<input id="user-username" type="text" name="user_username" value="" disabled>
+				<br>
+				<label class="form-line-3">
+					<label>Your Email : {{ user.email }}</label>
+					<br>
+					<input id="user-email" type="text" name="user_email" value="" disabled>
+				</label>
+			</form>
+			<form class="card" id="change-username" action="api/changeusername" method="POST">
+				<input type="hidden" name="user-id" value="{{ user.id }}">
+				<label class="form-line">
+					<label class="h4">Change Username</label>
+				</label>
+				<hr>
+				<label class="form-line-3">
+					<label>New Username : </label>
+				</label>
+				<br>
+				<input id="new-profile-info" type="text" name="new_info" value="" required>
+				<br>
+				<label class="form-line-2">
+					<label class="form-line-3">
+						<label>Password : </label>
+						<br>
+						<input id="input_password" type="password" name="password" value="" required>
+					</label>
+					<br>
+					<label class="form-line-3">
+						<label>Confirm Password : </label>
+						<br>
+						<input id="confirm_password" type="password" name="confirm_password" value="" required>
+					</label>
+				</label>
+				<br>
+				<button type="submit" id="btn-update" class="regular-button button-primary">Update</button>
+			</form>
+		</form>
+		<form class="card" id="change-email" action="api/changeemail" method="POST">
+			<input type="hidden" name="user-id" value="{{ user.id }}">
+			<label class="form-line">
+				<label class="h4">Change Email</label>
+			</label>
+			<hr>
+			<label class="form-line-3">
+				<label>New Email : </label>
+			</label>
+			<br>
+			<input id="new-profile-info" type="email" name="new_info" value="" required>
+			<br>
+			<label class="form-line-2">
+				<label class="form-line-3">
+					<label>Password : </label>
+					<br>
+					<input id="input_password" type="password" name="password" value="" required>
+				</label>
+				<br>
+				<label class="form-line-3">
+					<label>Confirm Password : </label>
+					<br>
+					<input id="confirm_password" type="password" name="confirm_password" value="" required>
+				</label>
+			</label>
+			<br>
+			<button type="submit" id="btn-update" class="regular-button button-primary">Update</button>
+		</form>
+		<form class="card" id="change-password" action="api/changepassword" method="POST">
+			<input type="hidden" name="user-id" value="{{ user.id }}">
+			<label class="form-line">
+				<label class="h4">Change Password</label>
+			</label>
+			<hr>
+			<label class="form-line-3">
+				<label>New Password : </label>
+			</label>
+			<br>
+			<input id="password_field" type="password" name="new_info" value="" required onclick="showPasswordRequirements()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+			<br>
+			<label class="form-line-3">
+				<label>Confirm New Password : </label>
+			</label>
+			<br>
+			<input id="password_field_confirm" type="password" name="confirm_new_info" value="" required>
+			<br>
+			<label class="form-line-2">
+				<label class="form-line-3">
+					<label>Old Password : </label>
+					<br>
+					<input id="input_password" type="password" name="password" value="" required>
+				</label>
+				<br>
+				<label class="form-line-3">
+					<label>Confirm Password : </label>
+					<br>
+					<input id="confirm_password" type="password" name="confirm_password" value="" required>
+				</label>
+			</label>
+			
+			<label id="password_requirement">Password Must Contain : 
+				<br>
+				<label id="password_requirement_1" class="invalid">8 Characters</label>
+				<label id="password_requirement_2" class="invalid">1 Uppercase</label>
+				<br>
+				<label id="password_requirement_3" class="invalid">1 Lowercase</label>
+				<label id="password_requirement_4" class="invalid">1 Number</label>
+				<br>
+			</label>
+			<br>
+			<button type="submit" id="btn-update" class="regular-button button-primary">Update</button>
+		</form>
+		</div>
+	</section>
+{% endblock %}
+
+{% block javascript %}
+	<script src="{{ url_for('static', filename='js/password.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/profile.js') }}"></script>	
+{% endblock %}

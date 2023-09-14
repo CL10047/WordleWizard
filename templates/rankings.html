@@ -1,0 +1,99 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    Rankings - WordleWizard
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/rankings.css') }}">
+{% endblock %}
+
+{% block content %}
+	<section id="dashboard-section" class="bg-lightgrey">
+		<div class="container">
+			<h1 class="h3">Rankings</h1>
+			<h6>Total Wins</h6>
+			<table>
+				<colgroup>
+					<col style="width:10%" />
+					<col style="width:55%" />
+					<col style="width:35%" />
+				</colgroup>
+				<tr>
+					<th class="text-center">#</th>
+					<th class="text-center">User</th>
+					<th class="text-center">Total Wins</th>
+				</tr>
+				{% for ranking, user in num_wins_rankings %}
+					<tr>
+						{% if user.id == session['user'] %}
+							<td class="text-center bold">{{ loop.index }}.</td>
+  							<td class="text-center bold">{{ user.username }} (You)</td>
+							<td class="text-center bold">{{ ranking.total_wins }}</td>
+						{% else %}
+							<td class="text-center">{{ loop.index }}.</td>
+							<td class="text-center">{{ user.username }}</td>
+							<td class="text-center">{{ ranking.total_wins }}</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</table>
+			<br>
+			<h6>Win Percentage</h6>
+			<table>
+				<colgroup>
+					<col style="width:10%" />
+					<col style="width:55%" />
+					<col style="width:35%" />
+				</colgroup>
+				<tr>
+					<th class="text-center">#</th>
+					<th class="text-center">User</th>
+					<th class="text-center">Win Percentage</th>
+				</tr>
+				{% for ranking, user in win_percentage_rankings %}
+					<tr>
+						{% if user.id == session['user'] %}
+							<td class="text-center bold">{{ loop.index }}.</td>
+  							<td class="text-center bold">{{ user.username }} (You)</td>
+							<td class="text-center bold">{{ "%.2f" % ranking.win_percentage }}%</td>
+						{% else %}
+							<td class="text-center">{{ loop.index }}.</td>
+							<td class="text-center">{{ user.username }}</td>
+							<td class="text-center">{{ "%.2f" % ranking.win_percentage }}%</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</table>
+			<br>
+			<h6>Avg Guesses Per Win</h6>
+			<table>
+				<colgroup>
+					<col style="width:10%" />
+					<col style="width:55%" />
+					<col style="width:35%" />
+				</colgroup>
+				<tr>
+					<th class="text-center">#</th>
+					<th class="text-center">User</th>
+					<th class="text-center">Avg Guesses</th>
+				</tr>
+				{% for ranking, user in avg_guesses_rankings %}
+					<tr>
+						{% if user.id == session['user'] %}
+							<td class="text-center bold">{{ loop.index }}.</td>
+							<td class="text-center bold">{{ user.username }} (You)</td>
+							<td class="text-center bold">{{ "%.2f" % ranking.avg_guesses_win }}</td>
+						{% else %}
+							<td class="text-center">{{ loop.index }}.</td>
+							<td class="text-center">{{ user.username }}</td>
+							<td class="text-center">{{ "%.2f" % ranking.avg_guesses_win }}</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</table>
+			<br>
+		</div>  
+	</section>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+#feedback{
+    width: 95%;
+    resize: none;
+}
+#btn-submit-feedback {
+    margin-left: 5rem;
+    font-family: 'Bebas Neue', 'Helvetica', sans-serif;
+    letter-spacing: 0.1rem;
+}
+.h3 {
+    margin-left: 5rem;
+}

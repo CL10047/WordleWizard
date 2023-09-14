@@ -1,0 +1,49 @@
+.form-line-2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.card {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.h4 {
+    font-family: 'Bebas Neue', 'Helvetica', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    letter-spacing: 0.1rem;
+}
+.options {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+.form-line-3 {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+#new-profile-info, #password_field, #password_field_confirm {
+    margin-left: 10px;
+    width: 28%;
+}
+#password_field {
+    margin-bottom: 10px;
+}
+#btn-update {
+    margin-left: 10px;
+}
+#user-username, #user-email {
+    width: auto;
+    background-color: var(--white);
+    border: none;
+}
+#password_requirement {
+    color: var(--black);
+    margin-left: 10px;
+    word-break: break-all;
+    width: 28%;
+}
+#password_requirement_1, #password_requirement_2, #password_requirement_3, #password_requirement_4 {
+    margin-left: 10px;
+}

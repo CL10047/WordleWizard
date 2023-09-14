@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="WordleWizard is your ultimate companion for mastering the art of Wordle. Whether you're a beginner looking to improve your word-guessing skills or a seasoned Wordle enthusiast aiming to reach the pinnacle of word-solving prowess, WordleWizard has you covered.">
+		<meta property="og:title" content="WordleWizard - Become a Wordle Pro">
+		<meta property="og:description" content="WordleWizard is your ultimate companion for mastering the art of Wordle. Whether you're a beginner looking to improve your word-guessing skills or a seasoned Wordle enthusiast aiming to reach the pinnacle of word-solving prowess, WordleWizard has you covered.">
+		<meta property="og:image" content="{{ url_for('static', filename='images/social_share.png') }}">
+		<meta property="og:url" content="https://www.wordlewizard.com">
+		<meta name="twitter:title" content="WordleWizard - Become a Wordle Pro">
+		<meta name="twitter:description" content="WordleWizard is your ultimate companion for mastering the art of Wordle. Whether you're a beginner looking to improve your word-guessing skills or a seasoned Wordle enthusiast aiming to reach the pinnacle of word-solving prowess, WordleWizard has you covered.">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/wordlewizard-favicon.png') }}">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		{% block css %}
+		{% endblock %}
+	</head>
+	<body>
+		<nav id="nav">
+			<div id="nav-wrapper">
+				{% if session.user and session.user_type == 0 %}
+					<a id="home-link" href="{{ url_for('index') }}">
+						<img class="logo_img" src="{{ url_for('static', filename='icons/logo-transparent.png')}}" 
+							alt="WordleWizard Logo" width="100" height="60">
+					</a>
+				{% elif session.user and (session.user_type == 1 or session.user_type == 2) %}
+					<a id="home-link" href="{{ url_for('viewfeedback') }}">
+						<img class="logo_img" src="{{ url_for('static', filename='icons/logo-transparent.png')}}" 
+							alt="WordleWizard Logo" width="100" height="60">
+					</a>
+				{% else %}
+					<a id="home-link" href="{{ url_for('index') }}">
+						<img class="logo_img" src="{{ url_for('static', filename='icons/logo-transparent.png')}}" 
+							alt="WordleWizard Logo" width="100" height="60">
+					</a>
+				{% endif %}	
+				<ul id="nav-menu">
+                    {% if session.user and session.user_type == 0 %}
+						<li class="nav-item">
+							<a href="{{ url_for('index') }}">Train</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('stats') }}">Stats</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('rankings') }}">Rankings</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('logout') }}">Logout</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('profile') }}">Profile</a>
+						</li>
+					{% elif session.user %}
+						<li class="nav-item">
+							<a href="{{ url_for('viewfeedback') }}">View Feedback</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('viewusers') }}">View Users</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('logout') }}">Logout</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('profile') }}">Profile</a>
+						</li>
+                    {% else %}
+						<li class="nav-item">
+							<a href="{{ url_for('login') }}">Login</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{ url_for('signup') }}">Sign Up</a>
+						</li>
+                    {% endif %}
+				</ul>
+			</div>
+		</nav>
+		<main class="bg-lightgrey">
+			{% with messages = get_flashed_messages(with_categories = True) %} 
+				{% if messages %} 
+					{% for category, message in messages %} 
+						<div class="flash-message-container">
+							<div class="{{ category }}-message">
+								{{ message }}
+							</div>
+						</div>
+					{% endfor %} 
+				{% endif %}
+			{% endwith %}
+
+			{% block content %} {% endblock %}
+		</main>
+		<footer>
+			<div id="footer-container" class="container">
+				<div class="footer-group">
+					{% if session.user and session.user_type == 0 %}
+						<a id="home-link2" href="{{ url_for('index') }}">
+							<img class="logo_img" src="{{ url_for('static', filename='icons/logo-compress.png')}}" 
+								alt="WordleWizard Logo" width="250" height="80">
+						</a>
+					{% elif session.user and (session.user_type == 1 or session.user_type == 2) %}
+						<a id="home-link2" href="{{ url_for('viewfeedback') }}">
+							<img class="logo_img" src="{{ url_for('static', filename='icons/logo-compress.png')}}" 
+								alt="WordleWizard Logo" width="250" height="80">
+						</a>
+					{% else %}
+						<a id="home-link2" href="{{ url_for('index') }}">
+							<img class="logo_img" src="{{ url_for('static', filename='icons/logo-compress.png')}}" 
+								alt="WordleWizard Logo" width="250" height="80">
+						</a>
+					{% endif %}	
+				</div>
+				<div class="footer-group">
+					{% if session.user and (session.user_type == 1 or session.user_type == 2) %}
+						<b class="footer-header">ADMINS</b>
+						<a href="{{ url_for('viewfeedback') }}">View Feedback</a>
+						<a href="{{ url_for('viewusers') }}">View Users</a>
+						<a href="{{ url_for('profile') }}">Profile</a>
+					{% else %}
+						<b class="footer-header">MEMBERS</b>
+						<a href="{{ url_for('index') }}">Train</a>
+						<a href="{{ url_for('stats') }}">Stats</a>
+						<a href="{{ url_for('rankings') }}">Rankings</a>
+						<a href="{{ url_for('profile') }}">Profile</a>
+					{% endif %}
+				</div>
+				<div class="footer-group">
+					<b class="footer-header">WordleWizard</b>
+					<a href="{{ url_for('about') }}">About</a>
+					<a href="{{ url_for('contact') }}">Contact Us</a>
+				</div>
+				<div class="footer-group">
+					<small>
+						Copyright<br>
+						Christopher Lee (1009161764)<br>
+						&copy; 2023 
+					</small>
+				</div>
+			</div>
+		</footer>
+		{% block javascript %}
+		{% endblock %}
+	</body>
+</html>

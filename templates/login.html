@@ -1,0 +1,33 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    Login - WordleWizard
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section id="login-section" class="bg-lightgrey">
+        <div class="container">
+            <h1 class="h1">
+                Welcome back! Let's start training.
+            </h1>
+            <form id="login-form" action="{{ url_for('login') }}" method="POST">
+                <div class="card bg-white padding-large">
+                    <h2 class="h5">Login</h2>
+                    <div class="form-input">
+                        <label for="email_field">Email</label>
+                        <input id="email_field" type="email" name="email" value="" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="password_field">Password</label>
+                        <input id="password_field" type="password" name="password" value="" required>
+                    </div>
+                    <button type="submit" id="btn-login" class="regular-button button-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

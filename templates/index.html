@@ -1,0 +1,161 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    Train - WordleWizard
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+        <div class="alert" id="alertbox" onclick="style.display='none'";>
+            <label id="alert"></label>
+        </div>
+        <div class="form-input">
+            <input id="guess-field" autofocus onkeypress="return validateKeyStrokes(event)" type="guess" name="guess" value="" maxlength="5" required>
+        </div>
+		<div class="wordle-typing">
+            <h1>WordleWizard</h1>
+            <table id = "guess">
+                <colgroup>
+					<col style="width:20%" />
+					<col style="width:20%" />
+                    <col style="width:20%" />
+                    <col style="width:20%" />
+                    <col style="width:20%" />
+				</colgroup>
+                <tr>
+					<th class="text-center"> </th>
+					<th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+				</tr>
+                <tr>
+					<th class="text-center"> </th>
+					<th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+				</tr>
+                <tr>
+					<th class="text-center"> </th>
+					<th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+				</tr>
+                <tr>
+					<th class="text-center"> </th>
+					<th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+				</tr>
+                <tr>
+					<th class="text-center"> </th>
+					<th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+				</tr>
+                <tr>
+					<th class="text-center"> </th>
+					<th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-center"> </th>
+				</tr>
+            </table>
+            <table class = "keyboard" id = "style-1">
+                <colgroup>
+					<col style="width:10%" />
+					<col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+					<col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+				</colgroup>
+                <tr>
+					<th class="text-center" id = "q" onclick="keyboard_letter(this)">q</th>
+					<th class="text-center" id = "w" onclick="keyboard_letter(this)">w</th>
+                    <th class="text-center" id = "e" onclick="keyboard_letter(this)">e</th>
+                    <th class="text-center" id = "r" onclick="keyboard_letter(this)">r</th>
+                    <th class="text-center" id = "t" onclick="keyboard_letter(this)">t</th>
+                    <th class="text-center" id = "y" onclick="keyboard_letter(this)">y</th>
+					<th class="text-center" id = "u" onclick="keyboard_letter(this)">u</th>
+                    <th class="text-center" id = "i" onclick="keyboard_letter(this)">i</th>
+                    <th class="text-center" id = "o" onclick="keyboard_letter(this)">o</th>
+                    <th class="text-center" id = "p" onclick="keyboard_letter(this)">p</th>
+				</tr>
+            </table>
+            <table class = "keyboard" id = "style-2">
+                <colgroup>
+					<col style="width:10%" />
+					<col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+					<col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+				</colgroup>
+                <tr>
+					<th class="text-center" id = "a" onclick="keyboard_letter(this)">a</th>
+                    <th class="text-center" id = "s" onclick="keyboard_letter(this)">s</th>
+                    <th class="text-center" id = "d" onclick="keyboard_letter(this)">d</th>
+                    <th class="text-center" id = "f" onclick="keyboard_letter(this)">f</th>
+                    <th class="text-center" id = "g" onclick="keyboard_letter(this)">g</th>
+					<th class="text-center" id = "h" onclick="keyboard_letter(this)">h</th>
+                    <th class="text-center" id = "j" onclick="keyboard_letter(this)">j</th>
+                    <th class="text-center" id = "k" onclick="keyboard_letter(this)">k</th>
+                    <th class="text-center" id = "l" onclick="keyboard_letter(this)">l</th>
+				</tr>
+            </table>
+            <table class = "keyboard" id = "style-1">
+                <colgroup>
+					<col style="width:15%" />
+					<col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+					<col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:10%" />
+                    <col style="width:15%" />
+				</colgroup>
+                <tr>
+					<th class="text-center" id = "enter" onclick="keyboard_letter(this)">enter</th>
+                    <th class="text-center" id = "z" onclick="keyboard_letter(this)">z</th>
+                    <th class="text-center" id = "x" onclick="keyboard_letter(this)">x</th>
+                    <th class="text-center" id = "c" onclick="keyboard_letter(this)">c</th>
+                    <th class="text-center" id = "v" onclick="keyboard_letter(this)">v</th>
+					<th class="text-center" id = "b" onclick="keyboard_letter(this)">b</th>
+                    <th class="text-center" id = "n" onclick="keyboard_letter(this)">n</th>
+                    <th class="text-center" id = "m" onclick="keyboard_letter(this)">m</th>
+                    <th class="text-center" id = "del" onclick="keyboard_letter(this)">del</th>
+				</tr>
+            </table>
+        </div>
+        {% if guest == False %}
+            <form id ="submit-form" action="api/training" method="POST">
+                <input type="hidden" name="user-id" value="{{ user.id }}">
+                <div class="form-input">
+                    <input id="guess-count" value="" type="count" name="count" maxlength="1">
+                </div>
+            </form>
+            <input class="hide" id="guest_status" value="1" type="count" name="count" maxlength="1">
+        {% else %}
+            <input class="hide" id="guest_status" value="0" type="count" name="count" maxlength="1">
+        {% endif %}
+        <!-- <button type="button" onclick="window.location.reload()">Restart</button> -->
+{% endblock %}
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

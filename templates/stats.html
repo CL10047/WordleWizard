@@ -1,0 +1,89 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    Stats - WordleWizard
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/stats.css') }}">
+{% endblock %}
+
+{% block content %}
+	<section class="bg-lightgrey text-white">
+		<div class="container">
+			<h1 class="h3">Stats for {{ user.username }}</h1>
+
+			{% if not extra_stats.total_games %}
+				<h3>No Stats yet, start training in the <a href="{{ url_for('index') }}">Training</a> page!</h3>
+			{% else %}
+				<table id="info-card">
+					<colgroup>
+						<col style="width:47.5%" />
+						<col style="width:5%" />
+						<col style="width:47.5%" />
+					</colgroup>
+					<tr>
+						<th id="total-win-percent" class="info h1">Win Percent <br> {{ "%.2f" % extra_stats.win_percentage }}%</th>
+						<th></th>
+						<th id="avg-guess-wi" class="info h1">Avg Guesses Per Win <br> {{ "%.2f" % extra_stats.avg_guesses_win }}</th>
+					</tr>
+				</table>
+				<br>
+				<hr>
+				<br>
+				<div id="graph" class="card">
+					<h3 id="graph-label">Percentages for Guesses (Hover for More Information)</h3>
+					<label class="form-line">
+						<label>1:</label>
+						<input id="count-1-percentage" value="" disabled>
+						<label class="extra-stats-1 hide">({{ extra_stats.user_wins_1g }}/{{ extra_stats.total_games }} or {{ "%.2f" % (extra_stats.user_wins_1g / extra_stats.total_games * 100)}}%)</label>
+					</label>
+					<label class="form-line">
+						<label>2:</label>
+						<input id="count-2-percentage" value="" disabled>
+						<label class="extra-stats-2 hide">({{ extra_stats.user_wins_2g }}/{{ extra_stats.total_games }} or {{ "%.2f" % (extra_stats.user_wins_2g / extra_stats.total_games * 100)}}%)</label>
+					</label>
+					<label class="form-line">
+						<label>3:</label>
+						<input id="count-3-percentage" value="" disabled>
+						<label class="extra-stats-3 hide">({{ extra_stats.user_wins_3g }}/{{ extra_stats.total_games }} or {{ "%.2f" % (extra_stats.user_wins_3g / extra_stats.total_games * 100)}}%)</label>
+					</label>
+					<label class="form-line">
+						<label>4:</label>
+						<input id="count-4-percentage" value="" disabled>
+						<label class="extra-stats-4 hide">({{ extra_stats.user_wins_4g }}/{{ extra_stats.total_games }} or {{ "%.2f" % (extra_stats.user_wins_4g / extra_stats.total_games * 100)}}%)</label>
+					</label>
+					<label class="form-line">
+						<label>5:</label>
+						<input id="count-5-percentage" value="" disabled>
+						<label class="extra-stats-5 hide">({{ extra_stats.user_wins_5g }}/{{ extra_stats.total_games }} or {{ "%.2f" % (extra_stats.user_wins_5g / extra_stats.total_games * 100)}}%)</label>
+					</label>
+					<label class="form-line">
+						<label>6:</label>
+						<input id="count-6-percentage" value="" disabled>
+						<label class="extra-stats-6 hide">({{ extra_stats.user_wins_6g }}/{{ extra_stats.total_games }} or {{ "%.2f" % (extra_stats.user_wins_6g / extra_stats.total_games * 100)}}%)</label>
+					</label>
+					<label class="form-line">
+						<label>F:</label>
+						<input id="fail-count-percentage" value="" disabled>
+						<label class="extra-stats-fail hide">({{ extra_stats.user_fails }}/{{ extra_stats.total_games }} or {{ "%.2f" % (extra_stats.user_fails / extra_stats.total_games * 100)}}%)</label>
+					</label>
+				</div>
+				<br>
+				</div>
+				<label class="form-line hide">
+					<label id="count-1">{{ extra_stats.user_wins_1g }}</label>
+					<label id="count-2">{{ extra_stats.user_wins_2g }}</label>
+					<label id="count-3">{{ extra_stats.user_wins_3g }}</label>
+					<label id="count-4">{{ extra_stats.user_wins_4g }}</label>
+					<label id="count-5">{{ extra_stats.user_wins_5g }}</label>
+					<label id="count-6">{{ extra_stats.user_wins_6g }}</label>
+					<label id="count-fails">{{ extra_stats.user_fails }}</label>
+					<label id="count-total">{{ extra_stats.total_games }}</label>
+				</label>
+			{% endif %}
+		</section>	
+{% endblock %}
+{% block javascript %}
+	<script src="{{ url_for('static', filename='js/stats.js') }}"></script>
+{% endblock %}

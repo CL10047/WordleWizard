@@ -1,0 +1,49 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    Sign Up - WordleWizard
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section id="login-section" class="bg-lightgrey">
+        <div class="container">
+            <h1 class="h3">
+                Join WordleWizard Now!
+            </h1>
+            <form id="login-form" action="{{ url_for('signup') }}" method="POST">
+                <div class="card bg-white padding-large">
+                    <h2 class="h5">Create Account</h2>
+                    <div class="form-input">
+                        <label for="email_field">Email</label>
+                        <input id="email_field" type="email" name="email" value="" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="username_field">Username</label>
+                        <input id="username_field" type="text" name="username" value="" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="password_field">Password</label>
+                        <input id="password_field" type="password" name="password" value="" onclick="showPasswordRequirements()" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                    </div> 
+                    <label id="password_requirement" style="display: none;">Password Must Contain : 
+                        <br>
+                        <label id="password_requirement_1" class="invalid">8 Characters</label>
+                        <label id="password_requirement_2" class="invalid">1 Uppercase</label>
+                        <br>
+                        <label id="password_requirement_3" class="invalid">1 Lowercase</label>
+                        <label id="password_requirement_4" class="invalid">1 Number</label>
+                        <br>
+                    </label>
+                    <button type="submit" id="btn-login" class="regular-button button-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+{% block javascript %}
+    <script src="{{ url_for('static', filename='js/password.js') }}"></script>
+{% endblock %}

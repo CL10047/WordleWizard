@@ -1,0 +1,8 @@
+demoExtraStats,
+
+	num_records = ExtraStats.query.count()
+	if num_records == 0:
+		extra_stats_data = demoExtraStats()
+		for user_id, total_wins, total_games, win_percentage, avg_guesses_win, user_wins_1g, user_wins_2g, user_wins_3g, user_wins_4g, user_wins_5g, user_wins_6g, user_fails in extra_stats_data:
+			create_extra_stats(user_id, total_wins, total_games, win_percentage, avg_guesses_win, user_wins_1g, user_wins_2g, user_wins_3g, user_wins_4g, user_wins_5g, user_wins_6g, user_fails)
+			

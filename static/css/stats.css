@@ -1,0 +1,63 @@
+input {
+    background-color: var(--primary);
+    margin-left: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    max-height: 24px;
+}
+#count-2-percentage, #count-4-percentage, #count-6-percentage {
+    background-color: var(--secondary);
+}
+.form-line {
+    display: flex;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    margin-left: 2rem;
+    margin-right: auto;
+    width: 95%;
+}
+.h1 , h3{
+    letter-spacing: 0;
+}
+.form-line-2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#total-win-percent, #avg-guess-win {
+    width: 25%;
+}
+.card {
+    width: 95%;
+    margin-left: 5px;
+    margin-right: auto;
+    padding-right: 0;
+}
+.info {
+    background-color: var(--white);
+    border-radius: var(--button-radius);
+    border: 1px solid var(--mediumgrey);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+#graph-label {
+    margin-left: 0;
+    margin-top: 0;
+    letter-spacing: 0;
+}
+#count-1-percentage:hover + .hide, #count-2-percentage:hover + .hide, #count-3-percentage:hover + .hide, #count-4-percentage:hover + .hide, #count-5-percentage:hover + .hide, #count-6-percentage:hover + .hide, #fail-count-percentage:hover + .hide {
+    visibility: visible;
+}
+hr {
+    width: 95%;
+    margin-left: 5px;
+    margin-right: auto;
+}
+#info-card {
+    width: 50;
+}
+.extra-stats-1, .extra-stats-2, .extra-stats-3, .extra-stats-4, .extra-stats-5, .extra-stats-6, .extra-stats-fail {
+    white-space: nowrap;
+}

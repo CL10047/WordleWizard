@@ -1,0 +1,23 @@
+{% extends "nav.html" %}
+
+{% block title %}
+    About Us - WordleWizard
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+	<section class="bg-lightgrey text-white">
+		<div class="container">
+			<h1>
+                About WordleWizard
+			</h1>
+			<h6 id="about">
+				WordleWizard is a project at University of Toronto Scarborough Campus by Christopher Lee. 
+			</h6>
+			<br>
+		</div>
+	</section>
+{% endblock %}

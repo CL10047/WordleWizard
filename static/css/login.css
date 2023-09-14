@@ -1,0 +1,29 @@
+#login-section h1{
+    text-align: center;
+    margin-left: 0;
+}
+h2 {
+    font-family: 'Bebas Neue', 'Helvetica', sans-serif;
+}
+#login-form {
+    width: 100%;
+    margin: 40px auto;
+}
+@media screen and (min-width: 768px) {
+    #login-form  {
+        max-width: 70%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    #login-form  {
+        max-width: 50%;
+    }
+}
+#btn-login {
+    margin-left: 5rem;
+}
+#password_requirement {
+    margin-top: -10px;
+    margin-left: 85px;
+    margin-bottom: 15px;
+}

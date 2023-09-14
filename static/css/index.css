@@ -1,0 +1,43 @@
+#style-2 {
+    width: 36%;
+}
+.keyboard th, td {
+    background-color: #d3d6da;
+    cursor: pointer;
+    font-size: 15px;
+}
+table {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0.5em;
+    font-family: 'Helvetica';
+}
+table th, td {
+    padding: 1em;
+    border: 1px solid #ccc;
+    background-color: white;
+    word-break: break-all;
+    width: 1.5em;
+    height: 1.5em;
+}
+#guess {
+    width: 24%;
+}
+#guess-field {
+    text-transform: lowercase;
+    width: 30%;
+}
+.form-input {
+    text-align: center;
+    opacity: 0;
+    height: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', 'Helvetica', sans-serif;
+}
+h1 {
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 0;
+}
